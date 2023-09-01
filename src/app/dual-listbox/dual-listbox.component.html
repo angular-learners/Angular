@@ -1,0 +1,47 @@
+<p class="text-center">Dual List Box</p>
+            
+<button type="button" class="btn btn-dark" (click)="changeMode()"> {{ isMode ?'LIGHT MODE':'DARK MODE' }}</button>
+ 
+<div class="container p-3"  [ngClass]="isMode?'bg-dark text-white':'bg-primary'">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <input type="text" name="course" id="course-id" class="form-control" [(ngModel)]="course">
+                    </div>
+                </div>
+                 <div class="col-md-4">
+                    <div>
+                        <button type="button" class="btn btn-primary" (click)="addCourse()">ADD</button>
+                    </div>
+                 </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-8">
+                    <div *ngFor="let item of courseList;let index=index">
+                         <ul class="list-group">
+                            <li class="list-group-item"  [ngClass]="{'active':index==courseIndex}"  (click)="selectCourse(item,index)"> {{ item }}</li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+               <div>
+                 <button type="button" class="btn btn-dark"  (click)="courseLeft()" ><i class="fa-solid fa-arrow-left"></i></button>
+               </div>
+               <div class="my-3">
+                <button type="button" class="btn btn-dark" (click)="courseRight()" ><i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div *ngFor="let item of courseList2;let index=index">
+                <ul class="list-group">
+                   <li class="list-group-item" (click)="selectCourse2(item,index)" [ngClass]="{'active':index==courseIndex2}"> {{ item }}</li>
+                </ul>
+           </div>
+        </div>
+    </div>
+</div>
